@@ -46,13 +46,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ShowplaceViewHolde
 
     @Override
     public int getItemCount() {
-        return 0;
+        return showplaces.size();
     }
 
     class ShowplaceViewHolder extends RecyclerView.ViewHolder{
 
         TextView txtTitle, txtDescription;
-        ImageView imgPoster;
         Button btnRemove;
         CardView cardView;
 
@@ -66,7 +65,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ShowplaceViewHolde
 
             txtTitle=itemView.findViewById(R.id.txt_rv_title);
             txtDescription=itemView.findViewById(R.id.txt_rv_description);
-            imgPoster=itemView.findViewById(R.id.img_poster );
             btnRemove=itemView.findViewById(R.id.btn_rv_remove);
             cardView=itemView.findViewById(R.id.cv_rv);
 

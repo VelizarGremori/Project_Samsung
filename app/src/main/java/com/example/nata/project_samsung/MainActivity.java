@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new HomeFragment(), "Home");
-        adapter.addFragment(new ShowplaceFragment("Showplace", this), "Showplace");
-        adapter.addFragment(new ShowplaceFragment("Theatre", this), "Theatre");
-        adapter.addFragment(new ShowplaceFragment("Museum",this), "Museum");
+        adapter.addFragment(new ShowplaceFragment("Showplace"), "Showplace");
+        adapter.addFragment(new ShowplaceFragment("Theatre"), "Theatre");
+        adapter.addFragment(new ShowplaceFragment("Museum"), "Museum");
         adapter.addFragment(new FifaFragment(), "FIFA");
 
         viewPager.setAdapter(adapter);

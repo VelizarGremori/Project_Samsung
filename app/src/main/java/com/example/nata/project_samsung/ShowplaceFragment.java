@@ -20,38 +20,42 @@ public class ShowplaceFragment extends Fragment {
 
     String markPlace;
 
-    Context context;
-
     RecyclerView recyclerView;
+
+    View rootView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
     }
     public ShowplaceFragment(){}
 
     @SuppressLint("ValidFragment")
-    public ShowplaceFragment(String markPlace, Context context){
-        this.markPlace=markPlace; this.context=context;
+    public ShowplaceFragment(String markPlace){
+        this.markPlace=markPlace;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        rootView = inflater.inflate(R.layout.fragment_showplace, container, false);
+
         List<Showplace> showplaces =new ArrayList<>();
 
         showplaces.add(new Showplace(1, "Description!Description!Description!",
                 "Title","","",""));
+        showplaces.add(new Showplace(2, "Description!Description!Description!",
+                "Title","","",""));
 
-        View rootView = inflater.inflate(R.layout.fragment_showplace, container, false);
 
         recyclerView = rootView.findViewById(R.id.rv) ;
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new RVAdapter(showplaces, context));
+        recyclerView.setAdapter(new RVAdapter(showplaces, rootView.getContext()));
+
         return rootView;
     }
 }
