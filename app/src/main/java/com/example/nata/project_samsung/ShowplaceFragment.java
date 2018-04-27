@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,11 +23,6 @@ public class ShowplaceFragment extends Fragment {
 
     View rootView;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
     public ShowplaceFragment(){}
 
     @SuppressLint("ValidFragment")
@@ -44,10 +38,10 @@ public class ShowplaceFragment extends Fragment {
 
         List<Showplace> showplaces =new ArrayList<>();
 
-        showplaces.add(new Showplace(1, "Description!Description!Description!",
-                "Title","","",""));
-        showplaces.add(new Showplace(2, "Description!Description!Description!",
-                "Title","","",""));
+        showplaces.add(new Showplace(1, "Title","Description!Description!Description!",
+                "","",""));
+        showplaces.add(new Showplace(2,"Title", "Description!Description!Description!",
+                "","",""));
 
 
         recyclerView = rootView.findViewById(R.id.rv) ;

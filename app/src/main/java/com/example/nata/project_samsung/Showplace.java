@@ -10,7 +10,7 @@ public class Showplace {
     String url;
     String markPlace;
 
-    public Showplace(long id, String description, String title, String address, String url, String markPlace) {
+    public Showplace(long id, String title, String description,  String address, String url, String markPlace) {
         this.id = id;
         this.description = description;
         this.title = title;

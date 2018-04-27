@@ -2,6 +2,7 @@ package com.example.nata.project_samsung;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -84,6 +85,8 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ShowplaceViewHolde
 
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(context, ShowplaceActivity.class);
+                context.startActivity(intent);
 
             }
 
