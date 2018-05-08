@@ -5,10 +5,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
@@ -23,6 +28,8 @@ public class ShowplaceFragment extends Fragment {
 
     View rootView;
 
+    RVAdapter adapter;
+
     public ShowplaceFragment(){}
 
     @SuppressLint("ValidFragment")
@@ -36,20 +43,18 @@ public class ShowplaceFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_showplace, container, false);
 
-        List<Showplace> showplaces =new ArrayList<>();
+        ShowplaceHelper sh=new ShowplaceHelper(getContext());
 
-        showplaces.add(new Showplace(1, "Title","Description!Description!Description!",
-                "","",""));
-        showplaces.add(new Showplace(2,"Title", "Description!Description!Description!",
-                "","",""));
-
+        adapter = new RVAdapter(sh.getAll(markPlace), rootView.getContext());
 
         recyclerView = rootView.findViewById(R.id.rv) ;
 
+
         recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new RVAdapter(showplaces, rootView.getContext()));
+        recyclerView.setAdapter(adapter);
 
         return rootView;
     }
+
 }

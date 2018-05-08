@@ -1,6 +1,5 @@
 package com.example.nata.project_samsung;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
@@ -16,12 +15,13 @@ import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ShowplaceViewHolder>{
 
-    private List<Showplace> showplaces;
+    private List<Showplace> showplaces, showplacesCopy;
     private Context context;
 
     public RVAdapter(List<Showplace> showplaces, Context context) {
         this.showplaces = showplaces;
         this.context = context;
+        this.showplacesCopy = showplaces;
     }
 
     @Override
@@ -73,6 +73,24 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ShowplaceViewHolde
 
         }
     }
+
+//    Метод для поиска с помошью SearchView
+//public void filter(String text) {
+//    showplaces.clear();
+//    if(text.isEmpty()){
+//        showplaces.addAll(showplacesCopy);
+//    } else{
+//        text = text.toLowerCase();
+//        for(Showplace showplace: showplacesCopy){
+//            if(showplace.title.toLowerCase().contains(text) ||
+//                    showplace.description.toLowerCase().contains(text) ||
+//                    showplace.address.toLowerCase().contains(text)){
+//                showplaces.add(showplace);
+//            }
+//        }
+//    }
+//    notifyDataSetChanged();
+//}
 
 
 

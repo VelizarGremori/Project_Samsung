@@ -7,7 +7,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 
 import java.util.ArrayList;
@@ -28,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
+        viewPager.getCurrentItem();
 
         tabLayout = (TabLayout) findViewById(R.id.pages);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
 
@@ -42,9 +45,9 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new HomeFragment(), "Home");
-        adapter.addFragment(new ShowplaceFragment("Showplace"), "Showplace");
-        adapter.addFragment(new ShowplaceFragment("Theatre"), "Theatre");
-        adapter.addFragment(new ShowplaceFragment("Museum"), "Museum");
+        adapter.addFragment(new ShowplaceFragment("showplace"), "Showplace");
+        adapter.addFragment(new ShowplaceFragment("theatre"), "Theatre");
+        adapter.addFragment(new ShowplaceFragment("museum"), "Museum");
         adapter.addFragment(new FifaFragment(), "FIFA");
 
         viewPager.setAdapter(adapter);
@@ -78,4 +81,5 @@ public class MainActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
 }
