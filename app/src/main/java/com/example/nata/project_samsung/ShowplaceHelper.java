@@ -42,7 +42,7 @@ public class ShowplaceHelper {
             do {
 
                 String markPlace = cursor.getString(DBHelper.NUM_COLUMN_MARKPLACE);
-                if (!markPlaceToSearch.equals(markPlace) && markPlaceToSearch!=null) {
+                if (!markPlaceToSearch.equals(markPlace) && markPlaceToSearch!="") {
                     break;
                 }
                 long id = cursor.getLong(DBHelper.NUM_COLUMN_ID);

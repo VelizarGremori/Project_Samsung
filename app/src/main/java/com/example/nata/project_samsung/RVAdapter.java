@@ -104,6 +104,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ShowplaceViewHolde
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ShowplaceActivity.class);
+                intent.putExtra("id", showplace.id);
                 context.startActivity(intent);
 
             }
