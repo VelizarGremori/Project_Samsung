@@ -1,9 +1,15 @@
 package com.example.nata.project_samsung;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +17,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Serializable;
+import java.net.URL;
 import java.util.List;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ShowplaceViewHolder>{
+public class ShowplaceFragmentAdapter extends RecyclerView.Adapter<ShowplaceFragmentAdapter.ShowplaceViewHolder>{
 
     private List<Showplace> showplaces, showplacesCopy;
     private Context context;
 
-    public RVAdapter(List<Showplace> showplaces, Context context) {
+    public ShowplaceFragmentAdapter(List<Showplace> showplaces, Context context) {
         this.showplaces = showplaces;
         this.context = context;
         this.showplacesCopy = showplaces;
@@ -33,13 +43,47 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ShowplaceViewHolde
 
 //    Обработка каждого элемента на эране
     @Override
-    public void onBindViewHolder(ShowplaceViewHolder holder, int position) {
+    public void onBindViewHolder(final ShowplaceViewHolder holder, int position) {
 
         final Showplace showplace =showplaces.get(position);
 
         holder.txtTitle.setText(showplace.getTitle());
-        holder.txtDescription.setText(showplace.getDescription());
+        if(showplace.getDescription().length()>150){
+            holder.txtDescription.setText(showplace.getDescription().substring(0, 150));
+        }else {holder.txtDescription.setText(showplace.getDescription());}
 //        НАПИСАТЬ ОБРАБОТКУ КАРТИНКИ
+        if(showplace.getImage()!=null){
+            int resID = ((Activity)context).getResources().getIdentifier(showplace.getImage() , "drawable", "com.example.nata.project_samsung");
+            holder.imgView.setImageResource(resID);}
+
+// final Bitmap poster = BitmapFactory.decodeResource(((Activity)context).getResources().getDrawable(resID,((Activity)context).getTheme()));
+//        if (showplace.getBitmap() == null) {// проверяем есть у нас сохранёная картинка, если нет, скачиваем и сохраняем в память
+////
+////            new Thread(new Runnable() {
+////                @Override
+////                public void run() {
+////                    try {
+////                        URL url = new URL(showplace.getImage());
+////                        final Bitmap poster = BitmapFactory.decodeStream(url.openConnection().getInputStream()); // полчаем картинку по ссылке
+////                        ((Activity) context).runOnUiThread(new Runnable() { // с визуальными элментами можем работать только в главном потоке! Тут нам помогает контект.
+////                            @Override
+////                            public void run() {
+////                                showplace.setBitmap(poster); // сохраяем картинку, чтобы при повторном проистовании не загружать снова
+////                                holder.imgView.setImageBitmap(poster); //отображаем картинку
+////                                Log.d("DebugImage", showplace.getImage());
+////                            }
+////                        });
+////                    } catch (IOException e) {
+////                        e.printStackTrace();
+////                    }
+////                }
+////            }).start();
+////
+////
+////        } else {
+////            holder.imgView.setImageBitmap(showplace.getBitmap());//если картинка была загружена, то просто её отображаем.
+////        }
+
 
         holder.cardViewClickListener.setRecord(showplace);
 
@@ -53,7 +97,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ShowplaceViewHolde
     class ShowplaceViewHolder extends RecyclerView.ViewHolder{
 
         TextView txtTitle, txtDescription;
-        Button btnRemove;
+        ImageView imgView;
         CardView cardView;
 
 //        Инициализация слушателей
@@ -66,7 +110,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.ShowplaceViewHolde
 
             txtTitle=itemView.findViewById(R.id.txt_rv_title);
             txtDescription=itemView.findViewById(R.id.txt_rv_description);
-            btnRemove=itemView.findViewById(R.id.btn_rv_remove);
+            imgView=itemView.findViewById(R.id.img_rv);
             cardView=itemView.findViewById(R.id.cv_rv);
 
             cardView.setOnClickListener(cardViewClickListener);

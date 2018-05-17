@@ -51,8 +51,10 @@ public class ShowplaceHelper {
                 String address = cursor.getString(DBHelper.NUM_COLUMN_ADDRESS);
                 String url = cursor.getString(DBHelper.NUM_COLUMN_URL);
                 String image = cursor.getString(DBHelper.NUM_COLUMN_IMAGE);
+                Double lat = cursor.getDouble(DBHelper.NUM_COLUMN_LAT);
+                Double lng = cursor.getDouble(DBHelper.NUM_COLUMN_LNG);
 
-                arrayList.add(new Showplace(id, title, description, address, url, markPlace));
+                arrayList.add(new Showplace(id, title, description, address, url, markPlace, image, lat, lng));
             }while (cursor.moveToNext());
         }
         db.close();

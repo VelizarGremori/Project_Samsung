@@ -28,7 +28,7 @@ public class ShowplaceFragment extends Fragment {
 
     View rootView;
 
-    RVAdapter adapter;
+    ShowplaceFragmentAdapter adapter;
 
     public ShowplaceFragment(){}
 
@@ -45,7 +45,7 @@ public class ShowplaceFragment extends Fragment {
 
         ShowplaceHelper sh=new ShowplaceHelper(getContext());
 
-        adapter = new RVAdapter(sh.getAll(markPlace), rootView.getContext());
+        adapter = new ShowplaceFragmentAdapter(sh.getAll(markPlace), rootView.getContext());
 
         recyclerView = rootView.findViewById(R.id.rv) ;
 

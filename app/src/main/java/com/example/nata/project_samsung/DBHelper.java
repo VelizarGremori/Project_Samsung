@@ -26,6 +26,8 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final int NUM_COLUMN_URL = 4;
     public static final int NUM_COLUMN_MARKPLACE = 5;
     public static final int NUM_COLUMN_IMAGE = 6;
+    public static final int NUM_COLUMN_LAT = 7;
+    public static final int NUM_COLUMN_LNG = 8;
 
     private SQLiteDatabase mDataBase;
     private final Context mContext;

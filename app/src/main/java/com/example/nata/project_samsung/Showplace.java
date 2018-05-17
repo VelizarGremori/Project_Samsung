@@ -1,6 +1,8 @@
 package com.example.nata.project_samsung;
 
 
+import android.graphics.Bitmap;
+
 public class Showplace {
 
     long id;
@@ -9,14 +11,53 @@ public class Showplace {
     String address;
     String url;
     String markPlace;
+    String image;
+    Bitmap bitmap;
+    double lat, lng;
 
-    public Showplace(long id, String title, String description,  String address, String url, String markPlace) {
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Showplace(long id, String title, String description, String address, String url, String markPlace, String image, double lat, double lng) {
         this.id = id;
         this.description = description;
         this.title = title;
         this.address = address;
         this.url = url;
         this.markPlace = markPlace;
+        this.image = image;
+        this.lat = lat;
+        this.lng = lng;
+
     }
 
     public long getId() {
