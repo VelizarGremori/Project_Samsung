@@ -47,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new HomeFragment(), "Home");
         adapter.addFragment(new ShowplaceFragment("showplace"), "Showplace");
         adapter.addFragment(new ShowplaceFragment("theatre"), "Theatre");
-        adapter.addFragment(new ShowplaceFragment("museum"), "Museum");
-        adapter.addFragment(new FifaFragment(), "FIFA");
+        adapter.addFragment(new ShowplaceFragment("mus"), "Museum");
 
         viewPager.setAdapter(adapter);
     }
