@@ -6,9 +6,18 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/home_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </android.support.v7.widget.RecyclerView>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map_showplace_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <!--class="com.google.android.gms.maps.SupportMapFragment"-->
 
 </LinearLayout>

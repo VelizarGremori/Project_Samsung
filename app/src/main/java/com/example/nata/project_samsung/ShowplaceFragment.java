@@ -30,6 +30,8 @@ public class ShowplaceFragment extends Fragment {
 
     ShowplaceFragmentAdapter adapter;
 
+    ArrayList<Showplace> showplaces;
+
     public ShowplaceFragment(){}
 
     @SuppressLint("ValidFragment")
@@ -45,7 +47,9 @@ public class ShowplaceFragment extends Fragment {
 
         ShowplaceHelper sh=new ShowplaceHelper(getContext());
 
-        adapter = new ShowplaceFragmentAdapter(sh.getAll(markPlace), rootView.getContext());
+        showplaces = sh.getAll(markPlace);
+
+        adapter = new ShowplaceFragmentAdapter(showplaces, rootView.getContext());
 
         recyclerView = rootView.findViewById(R.id.rv) ;
 

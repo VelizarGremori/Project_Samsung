@@ -15,7 +15,7 @@
             android:id="@+id/toolbarShowplace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary">
+            android:background="@color/primary">
 
         </android.support.v7.widget.Toolbar>
 
@@ -46,6 +46,13 @@
             android:textColor="@android:color/holo_blue_light"
             android:layout_gravity="center"/>
 
+        <Button
+            android:id="@+id/star"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Добавить в избраннное"
+            android:layout_gravity="center"/>
+
         <TextView
             android:id="@+id/description_showplace_activity"
             android:layout_width="wrap_content"
@@ -54,11 +61,13 @@
             android:layout_marginLeft="5dp"
             android:textSize="18dp"/>
         <fragment
-            android:id="@+id/map_showplace_fragment"
+            android:id="@+id/map_showplace_activity"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_weight="0.5"
-            class="com.google.android.gms.maps.SupportMapFragment"/>
+            class="com.google.android.gms.maps.SupportMapFragment"
+            />
+
 
     </LinearLayout>
 </ScrollView>

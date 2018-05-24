@@ -48,42 +48,16 @@ public class ShowplaceFragmentAdapter extends RecyclerView.Adapter<ShowplaceFrag
         final Showplace showplace =showplaces.get(position);
 
         holder.txtTitle.setText(showplace.getTitle());
+
+
         if(showplace.getDescription().length()>150){
             holder.txtDescription.setText(showplace.getDescription().substring(0, 150));
         }else {holder.txtDescription.setText(showplace.getDescription());}
-//        НАПИСАТЬ ОБРАБОТКУ КАРТИНКИ
+
+
         if(showplace.getImage()!=null){
             int resID = ((Activity)context).getResources().getIdentifier(showplace.getImage() , "drawable", "com.example.nata.project_samsung");
             holder.imgView.setImageResource(resID);}
-
-// final Bitmap poster = BitmapFactory.decodeResource(((Activity)context).getResources().getDrawable(resID,((Activity)context).getTheme()));
-//        if (showplace.getBitmap() == null) {// проверяем есть у нас сохранёная картинка, если нет, скачиваем и сохраняем в память
-////
-////            new Thread(new Runnable() {
-////                @Override
-////                public void run() {
-////                    try {
-////                        URL url = new URL(showplace.getImage());
-////                        final Bitmap poster = BitmapFactory.decodeStream(url.openConnection().getInputStream()); // полчаем картинку по ссылке
-////                        ((Activity) context).runOnUiThread(new Runnable() { // с визуальными элментами можем работать только в главном потоке! Тут нам помогает контект.
-////                            @Override
-////                            public void run() {
-////                                showplace.setBitmap(poster); // сохраяем картинку, чтобы при повторном проистовании не загружать снова
-////                                holder.imgView.setImageBitmap(poster); //отображаем картинку
-////                                Log.d("DebugImage", showplace.getImage());
-////                            }
-////                        });
-////                    } catch (IOException e) {
-////                        e.printStackTrace();
-////                    }
-////                }
-////            }).start();
-////
-////
-////        } else {
-////            holder.imgView.setImageBitmap(showplace.getBitmap());//если картинка была загружена, то просто её отображаем.
-////        }
-
 
         holder.cardViewClickListener.setRecord(showplace);
 
