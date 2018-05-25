@@ -18,6 +18,8 @@ import com.google.android.gms.maps.model.Marker;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 
@@ -42,29 +44,7 @@ public class HomeFragment extends Fragment implements GoogleMap.OnMarkerDragList
         showplaces = sh.getAll(0);
 
 
-
-
-
-//        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
-//                .findFragmentById(R.id.map_showplace_home);
-////        LocationManager locationManager = (LocationManager)getActivity().
-////                getSystemService(Context.LOCATION_SERVICE);
-//        mapFragment.getMapAsync(new OnMapReadyCallback() {
-//            @Override
-//            public void onMapReady(GoogleMap googleMap) {
-//                    googleMap.setOnMarkerDragListener(HomeFragment.this);
-//                    googleMap.addMarker(new MarkerOptions()
-//                            .title(showplace.title)
-//                            .position(latLng)
-//                            .draggable(true));
-//                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
-//                }
-//
-//        });
-
-
-
-        adapter = new HomeFragmentAdapter(getStar(), rootView.getContext());
+        adapter = new HomeFragmentAdapter(showplaces, rootView.getContext());
 
         recyclerView = rootView.findViewById(R.id.home_rv) ;
 
@@ -95,41 +75,5 @@ public class HomeFragment extends Fragment implements GoogleMap.OnMarkerDragList
 
     }
 
-    public ArrayList<Showplace> getStar(){
-        SharedPreferences sp;
-        sp = getActivity().getPreferences(Context.MODE_PRIVATE);
-
-        Set<String> set;
-        set = sp.getStringSet("Star", null);
-
-        if (set==null){
-            ArrayList<Showplace> s =new ArrayList<>();
-            return s;
-        }
-
-        String[] st = (String[]) set.toArray();
-
-
-        int[]star = new int[st.length];
-        for(int i = 0; i<st.length;i++){
-            star[i]=Integer.parseInt(st[i]);
-        }
-
-        ArrayList<Showplace> starSp = new ArrayList<>();
-        for (Showplace v:showplaces){
-            for(int va:star)
-            if (v.id==va){
-                starSp.add(v);
-            }
-        }
-        return starSp;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        adapter = new HomeFragmentAdapter(getStar(), rootView.getContext());
-        recyclerView.setAdapter(adapter);
-    }
 }
 

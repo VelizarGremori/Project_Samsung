@@ -162,11 +162,13 @@ public class ShowplaceActivity extends AppCompatActivity implements GoogleMap.On
         if (sp.getStringSet("Star", null)!=null){
             stars= sp.getStringSet("Star", null);
         }else {stars.add(s);}
-        if (stars.contains(s)){
+        if (!stars.contains(s)){
             stars.add(s);
         }
         SharedPreferences.Editor editor = sp.edit();
         editor.putStringSet("Star", stars);
+        editor.putString("StarStar", s);
+        
         editor.commit();
         Toast.makeText(context, "Место добавлено", Toast.LENGTH_SHORT).show();
     }

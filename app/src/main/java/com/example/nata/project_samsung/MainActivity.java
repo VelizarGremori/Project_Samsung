@@ -1,5 +1,7 @@
 package com.example.nata.project_samsung;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
 
     Toolbar toolbar;
@@ -85,7 +89,5 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setupViewPager(viewPager);
-        viewPager.getCurrentItem();
     }
 }
