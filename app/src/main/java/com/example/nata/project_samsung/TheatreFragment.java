@@ -17,48 +17,47 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class ShowplaceFragment extends Fragment {
+public class TheatreFragment extends Fragment {
 
     RecyclerView recyclerView;
 
     View rootView;
 
-    ShowplaceFragmentAdapter adapter;
+    TheatreFragmentAdapter adapter;
 
     ArrayList<Showplace> showplaces;
 
-    public ShowplaceFragment(){}
+    public TheatreFragment(){}
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.fragment_showplace, container, false);
+        rootView = inflater.inflate(R.layout.fragment_theatre, container, false);
 
-        Log.d("FragmentTest", "ShowplaceFragment Instal");
+        Log.d("FragmentTest", "TheatreFragment Instal");
 
         ShowplaceHelper sh=new ShowplaceHelper(getContext());
 
-        showplaces = sh.getAll(3);
-
+        showplaces = sh.getAll(1);
         ArrayList<Showplace> showplaces2 = new ArrayList<>();
         for(int i = 0; i < showplaces.size();i++){
-            if (showplaces.get(i).getMarkPlace()==3){
+            if (showplaces.get(i).getMarkPlace()==1){
                 showplaces2.add(showplaces.get(i));
             }
         }
 
-        adapter = new ShowplaceFragmentAdapter(showplaces2, rootView.getContext());
+        adapter = new TheatreFragmentAdapter(showplaces2, rootView.getContext());
 
-        recyclerView = rootView.findViewById(R.id.rv_showplace) ;
-
+        recyclerView = rootView.findViewById(R.id.rv_theatre);
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));

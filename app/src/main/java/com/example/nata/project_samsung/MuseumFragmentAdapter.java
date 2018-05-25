@@ -23,12 +23,12 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.List;
 
-public class ShowplaceFragmentAdapter extends RecyclerView.Adapter<ShowplaceFragmentAdapter.ShowplaceViewHolder>{
+public class MuseumFragmentAdapter extends RecyclerView.Adapter<MuseumFragmentAdapter.MuseumViewHolder>{
 
     private List<Showplace> showplaces, showplacesCopy;
     private Context context;
 
-    public ShowplaceFragmentAdapter(List<Showplace> showplaces, Context context) {
+    public MuseumFragmentAdapter(List<Showplace> showplaces, Context context) {
         this.showplaces = showplaces;
         this.context = context;
         this.showplacesCopy = showplaces;
@@ -36,15 +36,15 @@ public class ShowplaceFragmentAdapter extends RecyclerView.Adapter<ShowplaceFrag
     }
 
     @Override
-    public ShowplaceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MuseumViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 //        Создаю view для каждого элемента в Recycle
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_rv, parent, false);
-        return new ShowplaceViewHolder(view);
+        return new MuseumViewHolder(view);
     }
 
 //    Обработка каждого элемента на эране
     @Override
-    public void onBindViewHolder(final ShowplaceViewHolder holder, int position) {
+    public void onBindViewHolder(final MuseumViewHolder holder, int position) {
 
         final Showplace showplace =showplaces.get(position);
 
@@ -69,7 +69,7 @@ public class ShowplaceFragmentAdapter extends RecyclerView.Adapter<ShowplaceFrag
         return showplaces.size();
     }
 
-    class ShowplaceViewHolder extends RecyclerView.ViewHolder{
+    class MuseumViewHolder extends RecyclerView.ViewHolder{
 
         TextView txtTitle, txtDescription;
         ImageView imgView;
@@ -80,7 +80,7 @@ public class ShowplaceFragmentAdapter extends RecyclerView.Adapter<ShowplaceFrag
 
 
 
-        public ShowplaceViewHolder(View itemView) {
+        public MuseumViewHolder(View itemView) {
             super(itemView);
 
             txtTitle=itemView.findViewById(R.id.txt_rv_title);

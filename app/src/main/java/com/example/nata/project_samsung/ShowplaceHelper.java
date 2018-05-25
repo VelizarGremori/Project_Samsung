@@ -30,7 +30,7 @@ public class ShowplaceHelper {
         }
     }
 
-    ArrayList<Showplace> getAll(String markPlaceToSearch){
+    ArrayList<Showplace> getAll(int markPlaceToSearch){
 
         Cursor cursor = db.query(TABLE_NAME, null, null,null,null,null,null, null);
         ArrayList<Showplace> arrayList = new ArrayList<>();
@@ -41,10 +41,10 @@ public class ShowplaceHelper {
 
             do {
 
-                String markPlace = cursor.getString(DBHelper.NUM_COLUMN_MARKPLACE);
-                if (!markPlaceToSearch.equals(markPlace) && markPlaceToSearch!="") {
-                    break;
-                }
+                int markPlace = cursor.getInt(DBHelper.NUM_COLUMN_MARKPLACE);
+//                if (markPlaceToSearch!=markPlace && markPlaceToSearch!=0) {
+//                    break;
+//                }
                 long id = cursor.getLong(DBHelper.NUM_COLUMN_ID);
                 String title = cursor.getString(DBHelper.NUM_COLUMN_TITLE);
                 String description = cursor.getString(DBHelper.NUM_COLUMN_DESCRIPTION);

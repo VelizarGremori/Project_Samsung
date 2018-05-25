@@ -45,9 +45,10 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new HomeFragment(), "Home");
-        adapter.addFragment(new ShowplaceFragment("showplace"), "Showplace");
-        adapter.addFragment(new ShowplaceFragment("theatre"), "Theatre");
-        adapter.addFragment(new ShowplaceFragment("mus"), "Museum");
+
+        adapter.addFragment(new ShowplaceFragment(), "Showplace");
+        adapter.addFragment(new TheatreFragment(), "Theatre");
+        adapter.addFragment(new MuseumFragment(), "Museum");
 
         viewPager.setAdapter(adapter);
     }
@@ -81,4 +82,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setupViewPager(viewPager);
+        viewPager.getCurrentItem();
+    }
 }

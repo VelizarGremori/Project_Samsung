@@ -12,9 +12,9 @@ import java.io.OutputStream;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static String DB_NAME = "Showplace.db";
+    private static String DB_NAME = "Showplaces.db";
     private static String DB_PATH = "";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 6;
 
     public static final String TABLE_NAME = "SHOWPLACE";
 

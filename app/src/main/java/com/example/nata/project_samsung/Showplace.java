@@ -10,7 +10,7 @@ public class Showplace {
     String title;
     String address;
     String url;
-    String markPlace;
+    int markPlace;
     String image;
     Bitmap bitmap;
     double lat, lng;
@@ -47,7 +47,7 @@ public class Showplace {
         this.image = image;
     }
 
-    public Showplace(long id, String title, String description, String address, String url, String markPlace, String image, double lat, double lng) {
+    public Showplace(long id, String title, String description, String address, String url, int markPlace, String image, double lat, double lng) {
         this.id = id;
         this.description = description;
         this.title = title;
@@ -100,11 +100,11 @@ public class Showplace {
         this.url = url;
     }
 
-    public String getMarkPlace() {
+    public int getMarkPlace() {
         return markPlace;
     }
 
-    public void setMarkPlace(String markPlace) {
+    public void setMarkPlace(int markPlace) {
         this.markPlace = markPlace;
     }
 }

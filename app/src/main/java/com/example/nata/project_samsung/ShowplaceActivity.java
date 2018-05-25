@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,6 +31,8 @@ import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ShowplaceActivity extends AppCompatActivity implements GoogleMap.OnMarkerDragListener {
 
@@ -63,7 +66,7 @@ public class ShowplaceActivity extends AppCompatActivity implements GoogleMap.On
 
         ShowplaceHelper sh = new ShowplaceHelper(getApplicationContext());
 
-        showplaces = sh.getAll("");
+        showplaces = sh.getAll(0);
         showplace = showplaces.get((int)id);
 
         latLng = new LatLng(showplace.lat, showplace.lng);
@@ -125,35 +128,14 @@ public class ShowplaceActivity extends AppCompatActivity implements GoogleMap.On
                         .title(showplace.title)
                         .position(latLng)
                         .draggable(true));
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
             }
         });
 
         star.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int s = (int)showplace.id;
-                try {
-                    sp = getPreferences(MODE_PRIVATE);
-                    String[] star = sp.getString("Star", "").split(" ");
-                    int[] starInt=new int[star.length+1];
-                    for (int i = 0; i<star.length;i++) {
-                        starInt[i] = Integer.parseInt(star[i]);
-                        if (starInt[i] == s) {
-                            throw new Exception();
-                        }
-                    }
-                    starInt[starInt.length-1] =s;
-                    Arrays.sort(starInt);
-                    SharedPreferences.Editor editor = sp.edit();
-                    String edit="";
-                    for (int v:
-                         starInt) {
-                        edit=edit+" "+v;
-                    }
-                    editor.putString("Star", edit);
-                    editor.commit();
-                }catch (Exception e){}
+                setStar();
             }
         });
     }
@@ -171,6 +153,22 @@ public class ShowplaceActivity extends AppCompatActivity implements GoogleMap.On
     @Override
     public void onMarkerDragEnd(Marker marker) {
 
+    }
+
+    public void setStar(){
+        String s = Integer.toString((int)showplace.id);
+        sp = getPreferences(MODE_PRIVATE);
+        Set<String> stars = new HashSet<>();
+        if (sp.getStringSet("Star", null)!=null){
+            stars= sp.getStringSet("Star", null);
+        }else {stars.add(s);}
+        if (stars.contains(s)){
+            stars.add(s);
+        }
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putStringSet("Star", stars);
+        editor.commit();
+        Toast.makeText(context, "Место добавлено", Toast.LENGTH_SHORT).show();
     }
 
 

@@ -59,7 +59,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
         ImageView imgView;
         CardView cardView;
 
-        CardViewClickListener cardViewClickListener = new CardViewClickListener();
+        CardHomeViewClickListener cardViewClickListener = new CardHomeViewClickListener();
 
 
         public HomeViewHolder(View itemView) {
@@ -68,7 +68,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
             txtTitle = itemView.findViewById(R.id.title_home);
             txtAddress = itemView.findViewById(R.id.address_home);
             imgView = itemView.findViewById(R.id.img_rv_home);
-            cardView = imgView.findViewById(R.id.home_content_rv);
+            cardView = itemView.findViewById(R.id.home_content_rv);
 
             cardView.setOnClickListener(cardViewClickListener);
         }
@@ -76,7 +76,7 @@ public class HomeFragmentAdapter extends RecyclerView.Adapter<HomeFragmentAdapte
 
     //    Обработка нажатий
 
-    class CardViewClickListener implements View.OnClickListener{
+    class CardHomeViewClickListener implements View.OnClickListener{
 
         private Showplace showplace;
 
